@@ -7,3 +7,11 @@ services:
       - ./smoothie-database:/recipes
     ports:
       - "8000:8000"
+
+  smoothie-app:
+    build:
+      context: .
+      dockerfile: Dockerfile_Clean
+    command: http://recipe-server:8000/tropical_paradise.txt
+    depends_on:
+      - recipe-server
